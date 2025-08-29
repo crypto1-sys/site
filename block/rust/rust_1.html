@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+
+<html>
+    <head></head>
+    <body>
+        <h1> How to Install Rust on Ubuntu/Debian</h1>
+        <p> The recommended way to install Rust is by using rustup, the official Rust installer and version manager.</p>
+        <div><img src="rust1.png"/></div>
+        <p>1.curl is a command-line tool to download data from the internet.
+Here it fetches the installation script for Rust.
+<br/>
+2. Options used <ul>
+    <li>--proto '=https' → Forces curl to only use HTTPS protocol. This prevents downloading over insecure connections.
+</li>
+<li>--tlsv1.2 → Requires at least TLS 1.2 for encryption (stronger security).
+</li>
+<li>-s → Silent mode (no progress bar).
+</li>
+<li>-S → Show errors (so you see them even with -s).
+</li>
+<li>-f → Fail silently on server errors (prevents writing an HTML error page to your terminal).
+</li>
+</ul>
+
+3. https://sh.rustup.rs
+
+This is the official Rust installer script provided by Rust maintainers.
+It’s just a shell script that knows how to download and set up rustup.
+<br/>
+4. | sh
+
+The pipe (|) sends the downloaded script directly into sh (the shell interpreter), which executes it immediately.</p>
+    </body>
+</html>

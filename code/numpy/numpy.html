@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>PROJECT MAYHEM</title>
+</head>
+
+<body>
+    <div>
+        <img src="numpy_logo.png" />
+    </div>
+
+    <h1>Chapter 1 Numpy : create an ndarray from a list </h1>
+
+    <h2>1. Knowledge </h2>
+
+    <p> The function <strong>np.array()</strong> in NumPy is used to 
+        create a NumPy array (ndarray) from
+         any kind of sequence-like object, such as: a Python list → [1, 2, 3]
+<br />
+
+It takes the given object and converts
+ it into a structured, efficient, and homogeneous array.
+
+</p>
+    <p> np.array(list) </p>
+    <h2>2. How to create an ndarray from a list</h2>
+
+    <h3> Numpy code 1 (0.05 xps)</h3>
+        <pre>
+            <code>
+1 import numpy as np
+2 my_array = np.array([1,2,3])
+    </code>
+        </pre>
+
+    <p> Explain this code </p>  
+    
+    <p> 
+
+Line 1: import numpy as np imports the NumPy library
+ and gives it the alias np, which is the standard 
+ convention in Python.<br/>
+
+Line 2: np.array([1, 2, 3]) converts the Python
+ list [1, 2, 3] into a NumPy array (ndarray). The 
+ result is stored in the variable my_array.</p>
+
+    <h2>3. Exercises</h2>
+
+    <h3> Exercise 1 (0.05 xps)</h3>
+
+    <p>  
+Create a Python list containing the numbers 1, 2, 3, 4, 5.
+Convert this list into a NumPy ndarray and print the result.</p>
+
+<h3> Solution </h3>
+<p><pre>
+            <code>
+1 import numpy as np
+2 my_list = [1, 2, 3, 4, 5]
+3 my_array = np.array(my_list)
+4 print(my_array)
+
+    </code>
+        </pre></p>
+
+
+
+
+
+
+</body>
+</html>
