@@ -3,17 +3,23 @@
 <html>
     <head></head>
     <body>
-        <h1>Chapter 4 : Bitcoin client part1 </h1>
+        <h1>Chapter 4 : Bitcoin client part1 (Wallet) </h1>
 
         <h3>1.Review the lesson </h3>
 <pre><code>
 pip install bitcoinlib
 pip install requets
 
-krang84_client.py 
+</code></pre>
 
-from bitcoinlin.wallet import Wallet
-import requests 
+<h2>2.Guided practice</h2>
+
+<pre><code>
+    from bitcoinlib.wallet import Wallet
+    import requests 
+    client=Wallet('alice')
+    addr = client.get_key().address
+    print(addr)
 </code></pre>
 
 <p><a href="./bitcoin3.html">retour</a></p>
