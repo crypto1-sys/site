@@ -3,27 +3,37 @@
 <html>
     <head></head>
     <body>
-        <h1>Chapter : state machine</h1>
+        <h1>Chapter 3 : distributed state machine</h1>
 
-        <p>Ethereum = "distributed state machine"
+        <h4>Definition</h4>
 
-Une state machine (machine à états) est un système qui a un état à un moment donné et qui peut changer d’état lorsqu’un événement se produit.
+        <p>
 
-Par exemple, une porte automatique peut être ouverte ou fermée : c’est son état. Appuyer sur le bouton change l’état.
 
-Ethereum est une state machine distribuée :
+A state machine is a system that has a state at a given moment and can change states when an event occurs.</p><p>
 
-“Distribuée” signifie que tout le réseau possède une copie de l’état.
+Example 1  an automatic door can be open or closed: that is its state. Pressing the button changes the state.</p><p>
 
-Chaque fois qu’un changement se produit (par exemple, un transfert de crypto), tout le réseau s’accorde pour mettre à jour son état de manière consistante.
+Ethereum is a distributed state machine:
 
-2️⃣ Ethereum vs Bitcoin
+“Distributed” means that the entire network has a copy of the state.
+
+Every time a change occurs (for example, a crypto transfer), 
+the entire network agrees to update its state consistently.
+</p>
+
+<h4>Ethereum vs Bitcoin</h4>
+<p>
+
+
 
 Bitcoin : suit seulement l’état de la monnaie (qui possède combien de BTC).
 
-Ethereum : suit l’état de n’importe quel type de donnée (et pas seulement l’argent).
+Ethereum : suit l’état de n’importe quel type de donnée (et pas seulement l’argent).</p>
 
-3️⃣ Clé–valeur comme mémoire
+<h4>Clé–valeur comme mémoire</h4>
+
+
 
 Ethereum utilise une data store clé–valeur :
 
@@ -31,17 +41,21 @@ Chaque valeur est accessible par une clé unique.
 
 Exemple : clé = "Book Title", valeur = "Mastering Ethereum".
 
-Cela ressemble au fonctionnement de la RAM d’un ordinateur : tu as une adresse (clé) et tu stockes quelque chose (valeur).
+Cela ressemble au fonctionnement de la RAM d’un ordinateur : tu as une adresse (clé) et tu stockes quelque chose (valeur).</p>
 
-4️⃣ Ethereum = ordinateur mondial
+<h4> Ethereum = ordinateur mondial
+</h4>
+<p>
 
 Ethereum peut charger et exécuter du code (smart contracts) dans sa “machine à états”.
 
 Le résultat de ce code modifie l’état, et la blockchain enregistre ces changements.
 
-Comme un ordinateur classique, mais le code et les changements d’état sont visibles et partagés par tout le réseau.
+Comme un ordinateur classique, mais le code et les changements d’état sont visibles et partagés par tout le réseau.</p>
 
-5️⃣ Différences clés par rapport à un PC normal
+<h4>Différences clés par rapport à un PC normal
+</h4>
+<p>
 
 Règles de consensus :
 
@@ -49,9 +63,9 @@ Les changements d’état ne sont valides que si le réseau entier est d’accor
 
 État distribué globalement :
 
-Chaque noeud possède la même mémoire, contrairement à un PC normal qui a sa RAM privée.
-
-6️⃣ En résumé simple
+Chaque noeud possède la même mémoire, contrairement à un PC normal qui a sa RAM privée.</p>
+<h4>Resume</h4>
+<p>
 
 Ethereum est comme un ordinateur géant partagé dans le monde entier, où :
 
@@ -62,5 +76,8 @@ Le code peut être exécuté pour changer l’état (smart contracts).
 Tout le monde est d’accord sur l’état grâce à la blockchain.
 
 Cela permet de “programmer” un ordinateur mondial fonctionnant sous consensus</p>
+
+
+<p><a href="eth3.html">back</a></p>
     </body>
 </html>
