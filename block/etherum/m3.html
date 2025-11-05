@@ -1,0 +1,43 @@
+<p>2) Générer/importer un wallet (seed, clé privée, adresse)</p>
+wallet.py
+<p>import os
+from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
+from eth_account import Account
+from web3 import Web3
+from dotenv import load_dotenv
+
+load_dotenv()
+Account.enable_unaudited_hdwallet_features()  # pour from_mnemonic si besoin
+
+# --- A) Générer une nouvelle seed (12 mots) ---
+def generate_wallet():
+    mnemonic = Bip39MnemonicGenerator().FromWordsNumber(12)  # 12 mots (128 bits entropie)
+    seed_bytes = Bip39SeedGenerator(mnemonic).Generate()
+    bip44_ctx = Bip44.FromSeed(seed_bytes, Bip44Coins.ETHEREUM).Purpose().Coin().Account(0).Change(Bip44Changes.CHAIN_EXT)
+
+    # Chemin MetaMask: m/44'/60'/0'/0/0 (index 0)
+    priv_key = bip44_ctx.AddressIndex(0).PrivateKey().Raw().ToHex()
+    acct = Account.from_key(priv_key)
+    return mnemonic, priv_key, acct.address
+
+# --- B) (Optionnel) Importer une seed existante (ex: depuis MetaMask) ---
+def import_from_mnemonic(mnemonic: str, index: int = 0):
+    seed_bytes = Bip39SeedGenerator(mnemonic).Generate()
+    bip44_ctx = Bip44.FromSeed(seed_bytes, Bip44Coins.ETHEREUM).Purpose().Coin().Account(0).Change(Bip44Changes.CHAIN_EXT)
+    priv_key = bip44_ctx.AddressIndex(index).PrivateKey().Raw().ToHex()
+    acct = Account.from_key(priv_key)
+    return priv_key, acct.address
+
+if __name__ == "__main__":
+    # 1) Générer un nouveau wallet
+    mnemonic, priv, addr = generate_wallet()
+    print("==== NOUVEAU WALLET ====")
+    print("Seed (mnemonic)  :", mnemonic)
+    print("Private key (hex):", priv)
+    print("Address          :", addr)
+
+    # 2) Exemple d'import à partir d’une seed (décommente si besoin)
+    # existing_mnemonic = "vos douze mots ici ..."
+    # priv2, addr2 = import_from_mnemonic(existing_mnemonic, index=0)
+    # print("Imported address :", addr2)
+</p>

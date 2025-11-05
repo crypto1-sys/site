@@ -1,0 +1,56 @@
+<p>4) Signer et envoyer une transaction (EIP-1559)</p>
+<p>fichier send_tx.py</p>
+<p>import os, math
+from web3 import Web3
+from eth_account import Account
+from dotenv import load_dotenv
+
+load_dotenv()
+w3 = Web3(Web3.HTTPProvider(os.environ["RPC_URL"]))
+assert w3.is_connected(), "Connexion RPC échouée"
+
+PRIVATE_KEY = os.getenv("PRIVATE_KEY")  # mets ta clé privée dans .env pour tester
+assert PRIVATE_KEY, "Ajoute PRIVATE_KEY à .env"
+
+acct = Account.from_key(PRIVATE_KEY)
+sender = acct.address
+to = input("Envoyer à (adresse 0x...): ").strip()
+amount_eth = float(input("Montant en ETH (ex: 0.001): "))
+
+nonce = w3.eth.get_transaction_count(sender)
+chain_id = w3.eth.chain_id
+
+# Estimation des frais EIP-1559
+latest = w3.eth.get_block("latest")
+base_fee = latest.get("baseFeePerGas", 0) or 0
+try:
+    priority_fee = w3.eth.max_priority_fee  # valeur recommandée par le nœud
+except Exception:
+    priority_fee = w3.to_wei(2, "gwei")     # fallback simple
+
+max_fee_per_gas = base_fee * 2 + priority_fee  # marge x2
+tx_skel = {
+    "from": sender,
+    "to": to,
+    "value": w3.to_wei(amount_eth, "ether"),
+    "nonce": nonce,
+    "chainId": chain_id,
+    "maxFeePerGas": int(max_fee_per_gas),
+    "maxPriorityFeePerGas": int(priority_fee),
+}
+
+# Estimation du gas (ajoute 'gas' après estimate_gas)
+gas_limit = w3.eth.estimate_gas(tx_skel)
+tx = {**tx_skel, "gas": gas_limit}
+
+signed = Account.sign_transaction(tx, PRIVATE_KEY)
+tx_hash = w3.eth.send_raw_transaction(signed.rawTransaction)
+print("Tx hash:", tx_hash.hex())
+print("Explorateur (ex. Sepolia Etherscan): https://sepolia.etherscan.io/tx/" + tx_hash.hex())
+</p>
+
+<p>.env exemple</p>
+
+<p>RPC_URL=https://sepolia.infura.io/v3/<TON_PROJECT_ID>
+PRIVATE_KEY=0x...   # (clé du wallet à utiliser sur le testnet)
+</p>

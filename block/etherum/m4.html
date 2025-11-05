@@ -1,0 +1,22 @@
+<p>3) Se connecter à un nœud et lire un solde</p>
+
+<p>RPC_URL=https://sepolia.infura.io/v3/<TON_PROJECT_ID>
+</p>
+
+fichier balance.py 
+
+
+<p>import os
+from web3 import Web3
+from dotenv import load_dotenv
+
+load_dotenv()
+w3 = Web3(Web3.HTTPProvider(os.environ["RPC_URL"]))
+assert w3.is_connected(), "Connexion RPC échouée"
+
+address = input("Adresse à vérifier: ").strip()
+balance_wei = w3.eth.get_balance(address)
+print("Balance:", w3.from_wei(balance_wei, "ether"), "ETH")
+print("Chain ID:", w3.eth.chain_id)
+</p>
+
